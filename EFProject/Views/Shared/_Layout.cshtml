@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNet.Identity
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+
+                <nav id="top-nav" class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="col-md-2"> </div>
+                    <div class="col-md-3 mt-2 mr-5 product-name"> My Twitter Clone </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav mt-2 ml-auto mt-lg-0">
+                            <li class="nav-item mx-2 mt-2">
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <a class="nav-link" href="#">
+                                        Welcome @User.Identity.GetUserName()
+                                    </a>
+                                }
+                            </li>
+                            <li class="nav-item mx-2">
+                                @Html.ActionLink("Home", "Index", "Tweet", routeValues: null, htmlAttributes: new { id = "homeLink" })
+                            </li>
+                            <li class="nav-item mx-2">
+                                @Html.ActionLink("Profile", "UpdateAccount", "Account", new { userId = @User.Identity.GetUserName() }, htmlAttributes: new { id = "profileLink" })
+                            </li>
+                            <li class="nav-item mx-2">
+                                @Html.ActionLink("SignOut", "Login", "Account", routeValues: null, htmlAttributes: new { id = "logoutLink" })
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                @*<nav id="top-nav" class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="col-md-2"> </div>
+                        <div class="col-md-3 mt-2 mr-5 product-name"> My Twitter Clone </div>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                            <ul class="navbar-nav mt-2 ml-auto mt-lg-0">
+                                <li class="nav-item mx-2 mt-2">
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <a class="nav-link" href="#">
+                                        Welcome @User.Identity.GetUserName()
+                                    </a>
+                                }
+                                </li>
+                                <li class="nav-item mx-2">
+                                    @Html.ActionLink("Home", "Index", "Tweet", routeValues: null, htmlAttributes: new { id = "homeLink" })
+                                </li>
+                                <li class="nav-item mx-2">
+                                    @Html.ActionLink("Profile", "UpdateAccount", "Account", new { userId = @User.Identity.GetUserName() }, htmlAttributes: new { id = "profileLink" })
+                                </li>
+                                <li class="nav-item mx-2">
+                                    @Html.ActionLink("SignOut", "Login", "Account", routeValues: null, htmlAttributes: new { id = "logoutLink" })
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>*@
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+

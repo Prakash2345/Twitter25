@@ -1,0 +1,46 @@
+﻿@using EFProject.Models
+@model List<TweetModel>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Dashboard Template for Bootstrap</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">           
+            <div class="col-md-9 col-lg-12 px-4 mb-2">
+                <div id="tweetCategory">
+                    <table class="table table-bordered borderless">
+                        <tbody>
+                            @foreach (var tweet in Model)
+                            {
+                                <tr id="@(tweet.Tweet_id)">
+                                    <td>@tweet.UserName</td>
+                                    <td><label name="lblMessage">@Html.DisplayFor(m => tweet.Message)</label>
+                                        @Html.TextBoxFor(m => tweet.Message, new { style = "display: none;" })
+                                        @Html.HiddenFor(m=> tweet.Tweet_id)
+                                    </td> 
+                                    <td>@tweet.Created</td>
+                                    <td>
+                                        @if (tweet.CanEdit)
+                                        {
+                                            <button name="Edit" disa>Edit</button><button name="Cancel" style="display:none;">Cancel</button><button name="Update" style="display:none;">Update</button><button name="Delete">Delete</button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+
+</script>
+
+</body>

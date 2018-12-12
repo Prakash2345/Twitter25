@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FSDModelStoreContainer" CdmEntityContainer="FSDEntities">
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="FSDModel.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="joined" ColumnName="joined" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tweets">
+      <EntityTypeMapping TypeName="FSDModel.Tweet">
+        <MappingFragment StoreEntitySet="Tweet">
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="tweet_id" ColumnName="tweet_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Following" TypeName="FSDModel.Following" StoreEntitySet="Following">
+      <EndProperty Name="Person1">
+        <ScalarProperty Name="user_id" ColumnName="user_id" />
+      </EndProperty>
+      <EndProperty Name="Person">
+        <ScalarProperty Name="user_id" ColumnName="following_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="sp_AddFollowing" FunctionName="FSDModel.Store.sp_AddFollowing" />
+  </EntityContainerMapping>
+</Mapping>

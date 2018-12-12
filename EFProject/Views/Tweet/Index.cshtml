@@ -1,0 +1,72 @@
+﻿<html>
+<head>
+    <title>My ASP.NET Application</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="~/Scripts/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="~/Scripts/New/tether.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/New/popper.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/New/bootstrap.min.js" type="text/javascript"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <link href="~/Content/New/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/application.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <!-- Custom styles for $(this) template -->
+</head>
+<body>
+    <!-- Header-->
+    @Html.Action("Header", "Account")
+    <!-- Header-->
+    <!--Main Content-->
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <div class="ml-3 flex-column pb-5">
+                        <p>Follow</p>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input type="text" name="txtSearch" class="form-control" id="txtSearch" />
+                            <a class="btn-default active" href="#" id="searchFollowing">Go</a>
+                        </form>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><span id="divTweet">0</span></a> Tweets
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" id="arFollowing">
+                                <span id="divFollowing">0</span>
+                            </a> Following                            
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" id="arFollowers">
+                                <span id="divFollowers">0</span>
+                            </a> Followers                            
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 bg-light" style="">
+                <div class="col-md-9 col-lg-12 px-4 mb-2">
+                    @Html.Action("AddTweet", "Tweet")
+                </div>
+                <div class="col-md-9 col-lg-12 px-4 mb-2">
+                    @Html.Action("ListTweets", "Tweet")
+                </div>
+            </main>
+        </div>
+    </div>
+    <!--Main Content-->
+    <!--Footer-->
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+    <!--Footer-->
+
+    <script src="~/Scripts/application.js" type="text/javascript">
+    </script>
+</body>
+</html>

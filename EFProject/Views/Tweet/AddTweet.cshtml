@@ -1,0 +1,32 @@
+﻿@using EFProject.Models
+@model TweetModel
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Dashboard Template for Bootstrap</title>
+</head>
+<body>
+    <div class="container-fluid">
+        @using (Html.BeginForm("AddTweet", "Tweet", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-md-9 col-lg-12 px-4 mb-2">What are you doing?</div>
+                <div class="col-md-9 col-lg-12 px-4 h-25 mb-3">
+                    @Html.TextAreaFor(m => m.Message, new { @class = "w-100 h-100" })
+                    @Html.HiddenFor(m => m.Tweet_id)
+                    @*@Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })*@
+                    <span class="text-danger field-validation-error" data-valmsg-for="Message" data-valmsg-replace="true" style="visibility:hidden">
+                    </span>
+                </div>
+                <div class="col-md-9 col-lg-12 px-4 mb-3">
+                    <input class="float-right btn btn-primary btn-shadow" type="button" id="btnAddTweet" name="btnAddTweet" value="Update" />
+                </div>
+            </div>
+        }
+
+    </div>
+
+
+</body>
